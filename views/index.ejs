@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<head>
+	
+    <title>Fauccet</title>
+    <meta name="keywords" content=" ">
+    <meta name="description" content=" ">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css">
+    <link rel="icon" href=" logo " sizes="32x32">
+    <link rel="stylesheet" href="./sheets/index.min.css">
+	<script> var isAdBlockActive = true; </script>
+	<script src="./scripts/ads.js"></script>
+</head>
+<body>
+      <!-- Page Contents -->
+      <script>
+        var seconds = 5;
+        setInterval(function(){
+        if(seconds < 1){
+          if(isAdBlockActive){
+            window.location.replace("YOUR ADBLOCK-BLOCK URL");
+          } 
+        }
+        seconds--;
+        }, 1000);
+          
+          </script>
+      <div class="pusher">
+        <div class="ui inverted vertical masthead center aligned segment">
+          <div id="cookies" style="display: none">
+            <div class="ui message">
+              <i id="cookiesbtn" class="close icon"></i>
+              <div class="header">
+                Cookies!
+              </div>
+              <p>We use cookies to ensure that we give you the best experience on our website.</p>
+            </div>
+          </div>
+		  
+          <div class="ui text container">
+            <img src="logo_bw.png" alt="Reddcoin Image Logo" id="imglogo"class="ui responsive small image">
+            
+            <h1 class="ui inverted header">  Faucet  </h1>
+            <h2>Earn free coin every hour.</h2>
+            <h3>Your Balance: <%= balance.toFixed(2) %> Coin</h3>
+            <form class="ui fluid action input" id="inputPC" method="POST">
+              <% if (user.wallet === "none please update") { %>
+              <input type="text" name="wallet" placeholder="Current Address: <%= user.wallet %>">
+              <button class="ui button" type="submit" formaction="/update">Update</button>
+              <%} else {%>
+              <input type="text" name="wallet" placeholder="Current Address: <%= user.wallet %>" readonly>
+              <button class="ui button" type="submit" formaction="/withdraw">Withdraw</button>
+              <%}%>
+            </form>
+            <form class="ui fluid action input" id="inputMobile" method="POST">
+              <p style="width: 100%;">
+                <% if (user.wallet === "none please update") { %>
+                <input style="width:100%;"type="text"   name="wallet" placeholder="Current Address: <%= user.wallet %>"><br/>
+                <button style="margin-top: 10px;" class="ui button" type="submit" formaction="/update">Update</button>
+                <%} else {%>
+                <input style="width:100%;"type="text"   name="wallet" placeholder="Current Address: <%= user.wallet %>"readonly><br/>
+                <button style="margin-top: 10px;" class="ui button" type="submit" formaction="/withdraw">Withdraw</button>
+                <%}%>
+              </p>
+            </form>
+              <h6 style="margin-top: 0;">You can use the same address on multiple devices.</h6>
+            <h6><%= alrt %></h6>
+            <% if (user.wallet === "none please update") { %>
+              <h4>Please update your Coin address to get started...</h4>
+              <%} else {%>
+            <h5>You just need to solve the captcha! And Yeah! free Coin</h5>
+            <% if(captcha === "Undef"){ %>
+              <%if(time <= 0){%>
+              <div class="ui text container">
+                    <form action="/" method="POST">
+                        <div style="text-align: center; display: inline-block;" class="g-recaptcha" data-sitekey="YOUR-RECAPCHA-SITE-KEY"></div> <br>
+                        <button class="ui button" type="submit">Submit</button>
+                    </form>
+                </div>
+                <%} else {%>
+                  <h4>Please wait more <%= Math.floor(time); %> minute(s) </h4>
+                  <%}%>
+            <% } if(captcha === "OK") { %>
+				<script>
+				if(isAdBlockActive){
+					window.location.replace("YOUR ADBLOCK-BLOCK URL");
+				} 
+				</script>
+                <form action="/run" method="POST">
+                    <button disabled="true" class="ui button" type="submit" id="btn">Get Coin</button>
+                    <script>
+                        var btn = document.getElementById("btn");
+                        var sseconds = 15;
+
+                        setInterval(function(){
+                            if(sseconds < 1){
+                                btn.disabled = false;
+                                btn.textContent = "Get coin";
+                                return true;
+                            }
+                            btn.innerHTML = "Please wait: <br>" + sseconds;
+                            sseconds--;
+                        }, 1000);
+                    </script>
+                </form>
+            <% } %>
+            <div style="margin: 50px;"></div>
+            <% if(pts > 0){%>
+                You got <%=pts%> Coins
+            <%}%>
+              <%}%>
+        </div>
+		<div style="margin-top: 100px;" class="ui text container">
+            Support us! <i class="heart icon"></i> Donate Reddcoin: Rs99hi9W7WBtXh8JPTjtPbtmk5fTXa1kca
+            <hr>
+             <div id="SC_TBlock_536245" class="SC_TBlock adM">loading...</div>
+		</div>
+        </div>
+      
+        <div class="ui vertical stripe segment">
+          <div class="ui middle aligned stackable grid container">
+            <div class="row">
+              <div class="eight wide column">
+                <h3 class="ui header">How it works</h3>
+                <div class="ui bulleted list">
+                  <div style="font-size: 1.3em" class="item">You can earn free Coin every hour by solving the captcha above.</div>
+                  <div style="font-size: 1.3em" class="item">To collect Coin, you need to enter your Coin wallet address.</div>
+                  <div style="font-size: 1.3em" class="item">The Coin address you entered will be your faucet account. Your balance is linked to that Coin address.</div>
+                  <div style="font-size: 1.3em" class="item">You can use the faucet on all your devices (laptop/desktop/tablet/smartphone). Please use the same Coin wallet address on all devices.</div>
+                  <div style="font-size: 1.3em" class="item">1 request per IP/Coin address per hour.</div>
+                  <div style="font-size: 1.3em" class="item">Minimum withdraw limit: 5 RDD. Withdraw fee: 0.5 RDD.</div>
+                </div>
+                <h3 class="ui header">About your Coin</h3>
+                <p>About your coin.</p>
+              </div>
+              <div class="six wide right floated column">
+                <img src="main_logo.png" alt="Reddcoin Logo" class="ui large image">
+              </div>
+            </div>
+            <div class="row">
+            </div>
+          </div>
+        </div>
+        
+        <!-- footer -->
+        <div class="ui inverted vertical footer segment">
+          <div class="ui container">
+            <div class="ui stackable inverted divided equal height stackable grid">
+              <div class="three wide column">
+                <h4 class="ui inverted header">Reddcoin</h4>
+                <div class="ui inverted link list">
+                  <a title="Website"  href="#" class="item">Website </a>
+                  <a title="Twitter"  href="#" class="item">Twitter </a>
+                  <a title="Facebook" href="#" class="item">Facebook</a>
+                  <a title="Google+"  href="#" class="item">Google+ </a>
+                  <a title="GitHub"   href="#" class="item">GitHub  </a>
+                </div>
+              </div>
+              <div class="three wide column">
+                <h4 class="ui inverted header">Your chances</h4>
+                <div class="ui inverted link list">
+                  <a title="Chances" class="item">30% - 0.05 COIN</a>
+                  <a title="Chances" class="item">50% - 0.1 COIN </a>
+                  <a title="Chances" class="item">10% - 0.25 COIN</a>
+                  <a title="Chances" class="item">8%  - 0.5 COIN </a>
+                  <a title="Chances" class="item">2%  - 1 COIN   </a>
+                </div>
+              </div>
+              <div class="seven wide column">
+                <h4 class="ui inverted header">About inactive accounts</h4>
+                <p>Make sure to claim your COIN every month to keep your account active.</p>
+                <p>Inactive accounts will be deleted.</p>
+                <form id="reset" method="POST" action="/reset">
+                    <button class="mini ui button">
+                      Remove current wallet
+                    </button>
+                  </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        function cks() {
+        var cookieName = "CookiesMsg";
+        var ress = 0;
+            var name = cookieName + "=";
+            var ca = document.cookie.split(';');
+            for(var i = 0; i < ca.length; i++) {
+             var c = ca[i];
+             while (c.charAt(0)==' ') {
+            c = c.substring(1);
+             }
+             if (c.indexOf(name) == 0) {
+                var strr = c.substring(name.length,c.length);
+                if(strr === '1') {
+                  ress = 1;
+                } 
+                };
+            }
+            if(ress === 0) {
+              document.getElementById('cookies').style.display = 'block';
+                  document.getElementById('cookiesbtn').onclick = function() {
+          
+                  var op = 1;  // initial opacity
+                  var element = document.getElementById('cookies');
+                  var timer = setInterval(function () {
+                  if (op <= 0.1){
+                  clearInterval(timer);
+                   element.style.display = 'none';
+                  document.cookie = "CookiesMsg" + "=" + "1" + ";" + "expires="+7*24*60*60*1000 + ";path=/";
+                  }
+                  element.style.opacity = op;
+                  element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+                  op -= op * 0.1;
+                  }, 30);
+            }
+          }}
+          cks();
+          var op = 1;  // initial opacity
+                  var element = document.getElementById('msg');
+				  if(element !== null){
+					var timer = setInterval(function () {
+					if (op <= 0.1){
+					clearInterval(timer);
+					element.style.display = 'none';
+					}
+					element.style.opacity = op;
+					element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+					op -= op * 0.1;
+					}, 30);
+				  }
+      </script>
+      <script src='https://www.google.com/recaptcha/api.js'></script>
+    </body>
+</html>
